@@ -1,0 +1,23 @@
+server:
+    port: 6666
+    datasourse:
+        szp:
+            driverClassName: org.mariadb.jdbc.Driver
+            url: jdbc:mariadb://localhost:3306/szp?autoReconnect=true&amp;autoReconnectForPools=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+            username: root
+            password: "123456"
+            testWhileIdle: true
+            testOnBrrow: true
+            validationQuery: 1
+            validationQueryTimeout: 5
+
+spring:
+    application:
+        name: cango-spring
+eureka:
+    instance:
+        prefer-ip-address: true
+        instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    client:
+        service-url:
+            defaultZone: http://localhost:1111/eureka/
